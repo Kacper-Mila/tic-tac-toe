@@ -1,32 +1,49 @@
 package com.m1064.player;
 
-public class PcPlayer implements Player {
-    private String name;
-    private char mark;
-    private int[] move;
+import com.m1064.board.Board;
 
-    public PcPlayer(String name, char mark) {
-        this.name = name;
-        this.mark = mark;
+import java.util.Arrays;
+import java.util.Random;
+
+public class PcPlayer extends Player {
+    private static final Random random = new Random();
+    private Board board;
+    public PcPlayer(String name, char mark, Board board) {
+        super(name, mark);
+        this.board = board;
+    }
+
+    public Board getBoard() {
+        return board;
     }
 
     @Override
-    public String getPlayerName() {
-        return this.name;
+    public void setMove() {
+        if (willOpponentWin(getBoard())){
+
+        } else {
+            if (isOnlyOneMark(getBoard())) {
+                this.move = new int[]{random.nextInt(3), random.nextInt(3)};
+            }
+        };
     }
 
-    @Override
-    public char getPlayerMark() {
-        return this.mark;
+    private boolean willOpponentWin(Board board){
+        return false;
     }
 
-    @Override
-    public int[] getMove() {
-        return this.move;
-    }
+    private void makeMove(Board board, int[] move){
 
-    @Override
-    public void setMove(int x, int y) {
-        this.move = new int[]{x, y};
+    }
+    private boolean isOnlyOneMark(Board board){
+        int count = 0;
+        for (int row = 0; row < 3; row++) {
+            for (int col = 0; col < 3; col++) {
+                if (board.getBoard()[row][col] != '\u0000') {
+                    count++;
+                }
+            }
+        }
+        return count == 1;
     }
 }

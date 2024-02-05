@@ -1,11 +1,29 @@
 package com.m1064.player;
 
-interface Player {
-    public String getPlayerName();
+public abstract class Player {
+    String playerName;
+    char playerMark;
 
-    public char getPlayerMark();
+    int[] move;
 
-    public int[] getMove();
 
-    public void setMove(int x, int y);
+    public Player(String playerName, char playerMark) {
+        this.playerName = playerName;
+        this.playerMark = playerMark;
+    }
+
+    public String getPlayerName() {
+        return playerName;
+    }
+
+    public char getPlayerMark() {
+        return playerMark;
+    }
+
+    public int[] getMove() {
+        return move;
+    }
+    public void setMove() {
+        this.move = move;
+    }
 }

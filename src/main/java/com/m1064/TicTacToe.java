@@ -6,7 +6,7 @@ import java.util.Scanner;
 
 public class TicTacToe {
     private static final Scanner scanner = new Scanner(System.in);
-    private static Instructions instructions = new Instructions();
+    private static final Instructions instructions = new Instructions();
 
     public static void main(String[] args) {
         while (true) {
@@ -20,7 +20,7 @@ public class TicTacToe {
 
             if (gameMode == 1) {
                 Game game = new Game();
-                game.startGame(gameMode);
+                game.game(gameMode);
             } else if (gameMode == 2 || gameMode == 3) {
                 System.out.println("This mode is in development");
             } else if (gameMode == 4) {

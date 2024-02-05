@@ -3,14 +3,14 @@ package com.m1064.board;
 import com.m1064.utils.Utils;
 
 public class Board {
-    private final char[][] board;
+    private final char[][] boardArr;
 
-    public Board(char[][] board) {
-        this.board = board;
+    public Board(char[][] boardArr) {
+        this.boardArr = boardArr;
     }
 
     public char[][] getBoard() {
-        return board;
+        return boardArr;
     }
 
     public void placeMark(int x, int y, char mark, Board board) {
@@ -22,7 +22,7 @@ public class Board {
 
         for (int row = 0; row < 3; row++) {
             for (int col = 0; col < 3; col++) {
-                char cellValue = board[row][col];
+                char cellValue = boardArr[row][col];
                 String sign;
 
                 if (cellValue == 'X') {
@@ -48,23 +48,5 @@ public class Board {
         }
 
         System.out.println(sb);
-    }
-
-    public boolean isWinner(char mark) {
-        for (int i = 0; i < 3; i++) {
-            if (board[i][0] == mark && board[i][1] == mark && board[i][2] == mark) {
-                return true;
-            }
-            if (board[0][i] == mark && board[1][i] == mark && board[2][i] == mark) {
-                return true;
-            }
-        }
-        if (board[0][0] == mark && board[1][1] == mark && board[2][2] == mark) {
-            return true;
-        }
-        if (board[0][2] == mark && board[1][1] == mark && board[2][0] == mark) {
-            return true;
-        }
-        return false;
     }
 }
