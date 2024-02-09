@@ -7,12 +7,8 @@ import com.m1064.player.PcPlayer;
 import com.m1064.player.Player;
 import com.m1064.utils.Utils;
 
-import java.util.Scanner;
-
 
 public class Game {
-    private static final Scanner scanner = new Scanner(System.in);
-
     public void game(int gameMode) {
         Board board = new Board(new char[3][3]);
         if (gameMode == 1) {
@@ -25,6 +21,12 @@ public class Game {
             startGame(
                     board,
                     new HumanPlayer("Player 1", 'X'),
+                    new PcPlayer("Player 2", 'O', board)
+            );
+        } else {
+            startGame(
+                    board,
+                    new PcPlayer("Player 1", 'X', board),
                     new PcPlayer("Player 2", 'O', board)
             );
         }
@@ -60,12 +62,15 @@ public class Game {
     }
 
     public void makeMove(Board board, Player player) {
+        player.setMove();
         int row = player.getMove()[0];
         int col = player.getMove()[1];
         if (BoardValidator.isValidMove(row, col, board)) {
             board.placeMark(row, col, player.getPlayerMark(), board);
         } else {
-            System.out.println(Utils.ANSI_RED + "Invalid move!" + Utils.ANSI_RESET);
+            if (player instanceof HumanPlayer) {
+                System.out.println(Utils.ANSI_RED + "Invalid move!" + Utils.ANSI_RESET);
+            }
             makeMove(board, player);
         }
     }

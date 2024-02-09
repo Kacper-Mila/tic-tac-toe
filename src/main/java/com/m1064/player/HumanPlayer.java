@@ -10,8 +10,8 @@ public class HumanPlayer extends Player {
     @Override
     public void setMove() {
         System.out.println(getPlayerName() + " make your move: ");
-        int row = scanner.nextInt();
-        int col = scanner.nextInt();
+        int row = scanner.nextInt() - 1;
+        int col = scanner.nextInt() - 1;
         move = new int[]{row, col};
     }
 }
