@@ -7,7 +7,11 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="tic-tac-toe" />
+        <module name="Tic-tac-Toe" />
       </profile>
     </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="tic-tac-toe" target="17" />
+    </bytecodeTargetLevel>
   </component>
 </project>
